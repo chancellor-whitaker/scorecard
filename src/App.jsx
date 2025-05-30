@@ -71,7 +71,7 @@ export default function App() {
   };
 
   const grids = [table1, table2].map((rowData, index) => (
-    <div className="pt-3" key={index}>
+    <div key={index}>
       <AgGridReact
         autoSizeStrategy={{ type: "fitCellContents" }}
         columnDefs={generateColDefs(rowData)}
@@ -83,15 +83,7 @@ export default function App() {
     </div>
   ));
 
-  return (
-    <main className="container">
-      <div className="my-3 p-3 bg-body rounded shadow-sm">
-        <h6 className="border-bottom pb-2 mb-0">
-          Eastern Kentucky University Metrics Scorecard
-          {asteriskNote && ` (${asteriskNote})`}
-        </h6>
-        {grids}
-      </div>
-    </main>
-  );
+  const children = [<h6 className="mb-0">{asteriskNote}</h6>, ...grids];
+
+  return <>{children}</>;
 }
