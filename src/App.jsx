@@ -49,11 +49,11 @@ export default function App() {
             .replaceAll(",", "")
             .replaceAll("%", "")
         ),
-      "fw-bold": ({ colDef: { field }, data }) => {
-        if (field === "Metric") return data[field] in notes;
-      },
       dollar: ({ colDef: { field }, value }) =>
         field !== "Metric" && value.includes("$"),
+      "fw-bold": ({ colDef: { field } }) => {
+        return field === "Metric";
+      },
     },
     headerClass: ({ colDef: { field } }) => {
       return field === "Metric"
@@ -73,7 +73,7 @@ export default function App() {
   const grids = [table1, table2].map((rowData, index) => (
     <div key={index}>
       <AgGridReact
-        autoSizeStrategy={{ type: "fitCellContents" }}
+        autoSizeStrategy={{ type: "fitCellContents", colIds: ["Metric"] }}
         columnDefs={generateColDefs(rowData)}
         defaultColDef={defaultColDef}
         domLayout="autoHeight"

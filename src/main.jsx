@@ -13,7 +13,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Wrapper heading="Eastern Kentucky University Metrics Scorecard">
+    <Wrapper heading="Excellence Scorecard">
       <App></App>
     </Wrapper>
   </StrictMode>
